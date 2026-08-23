@@ -3,10 +3,13 @@
 {% block title %}My Home Page  10{% endblock %}
 {% block body %}
     {%for post in posts%}
-        {{post.text}} <br>
-        {% thumbnail post.image "500x500" crop="center" as im %}
-            <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ post.text }}">
-        {% endthumbnail %}
+        <a href="{% url 'feed:details' post.id %}" style="display: inline-block;">
+            {{post.text}} <br>
+            {% thumbnail post.image "500x500" crop="center" as im %}
+                <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ post.text }}">
+            {% endthumbnail %}
+
+        </a>
         <hr>
     {%endfor%}
 
